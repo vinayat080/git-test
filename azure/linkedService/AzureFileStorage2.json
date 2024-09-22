@@ -1,0 +1,13 @@
+{
+	"name": "AzureFileStorage2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureFileStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=vkmstorage;EndpointSuffix=core.windows.net;",
+			"fileShare": "vkmfilesharetarget",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEVCNDJERTdELUM4NDMtNDk5OC05OEFGLUZFQkU3RDc4ODFFMF9mNzE2ZWQ0Ny00YWMwLTQ1OGYtYjhiNy03ZDg2MjczYzkyM2YiDQp9"
+		}
+	}
+}
