@@ -1,0 +1,21 @@
+{
+	"name": "DestinationDataset_fs0",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureFileStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureFileStorageLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
