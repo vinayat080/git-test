@@ -1,0 +1,32 @@
+{
+	"name": "SourceDataset_73p",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "AzureEmp.csv",
+				"container": "employee"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "EmpID",
+				"type": "String"
+			},
+			{
+				"name": "EmpName",
+				"type": "String"
+			}
+		]
+	}
+}
