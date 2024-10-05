@@ -23,6 +23,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
 		},
+		"VKMAzureDBLinkedService_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'VKMAzureDBLinkedService'"
+		},
 		"AzureSqlDatabase1_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "vkmsqlserver.database.windows.net"
@@ -34,6 +38,10 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "vinayak"
+		},
+		"VKMAzureDBLinkedService_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1005-141142-wxqchdq0"
 		}
 	},
 	"variables": {
@@ -143,6 +151,36 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "VKMNoteBook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "Copy_73p",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/v.kumar.maheswari@accenture.com/vkm_adb_notebook"
+						},
+						"linkedServiceName": {
+							"referenceName": "VKMAzureDBLinkedService",
+							"type": "LinkedServiceReference",
+							"parameters": {
+								"strAuthor": "Vinayak"
+							}
+						}
 					}
 				],
 				"policy": {
@@ -152,7 +190,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SourceDataset_73p')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_73p')]"
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_73p')]",
+				"[concat(variables('factoryId'), '/linkedServices/VKMAzureDBLinkedService')]"
 			]
 		},
 		{
@@ -435,6 +474,30 @@
 						"type": "SecureString",
 						"value": "[parameters('AzureSqlDatabase1_password')]"
 					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/VKMAzureDBLinkedService')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"strAuthor": {
+						"type": "string",
+						"defaultValue": "Vinayak"
+					}
+				},
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-2572320537955041.1.azuredatabricks.net",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('VKMAzureDBLinkedService_accessToken')]"
+					},
+					"existingClusterId": "[parameters('VKMAzureDBLinkedService_properties_typeProperties_existingClusterId')]"
 				}
 			},
 			"dependsOn": []
