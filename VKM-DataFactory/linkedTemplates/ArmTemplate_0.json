@@ -389,7 +389,10 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/Users/v.kumar.maheswari@accenture.com/vkm_adb_notebook"
+							"notebookPath": "/Users/v.kumar.maheswari@accenture.com/vkm_adb_notebook",
+							"baseParameters": {
+								"strAuthor": "Vinayak"
+							}
 						},
 						"linkedServiceName": {
 							"referenceName": "VKMAzureDBLinkedService",
